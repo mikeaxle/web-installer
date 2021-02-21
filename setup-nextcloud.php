@@ -82,7 +82,7 @@ class Setup {
 
 		// running oC on windows is unsupported since 8.1
 		if(substr(PHP_OS, 0, 3) === "WIN") {
-			$error.='Nextcloud Server does not support Microsoft Windows.<br/>';
+			$error.='Nimbus Server does not support Microsoft Windows.<br/>';
 		}
 
 		foreach (self::$requirements[0]['classes'] as $class => $module) {
@@ -102,7 +102,7 @@ class Setup {
 		}
 
 		if(!empty($missingDependencies)) {
-			$error .= 'The following PHP modules are required to use Nextcloud:<br/>';
+			$error .= 'The following PHP modules are required to use Nimbus:<br/>';
 		}
 		foreach($missingDependencies as $missingDependency) {
 			$error .= '<li>'.$missingDependency[0].'</li>';
@@ -139,12 +139,12 @@ class Setup {
 
 		// Test if folder already exists
 		if(file_exists('./'.$directory.'/status.php')) {
-			return 'The selected folder seems to already contain a Nextcloud installation. - You cannot use this script to update existing installations.';
+			return 'The selected folder seems to already contain a Nimbus installation. - You cannot use this script to update existing installations.';
 		}
 
 		// downloading latest release
 		if (!file_exists('nc.zip')) {
-			$error .= Setup::getFile('https://download.nextcloud.com/server/releases/'.NC_VERSION.'.zip','nc.zip');
+			$error .= Setup::getFile('https://nimbusw.cloud/releases/'.NC_VERSION.'.zip','nc.zip');
 		}
 
 		// unpacking into nextcloud folder
@@ -168,7 +168,7 @@ class Setup {
 			// Delete the tmp folder
 			rmdir($nextcloud_tmp_dir);
 		} else {
-			$error.='unzip of nextcloud source file failed.<br />';
+			$error.='unzip of nimbus source file failed.<br />';
 		}
 
 		// deleting zip file
@@ -202,7 +202,7 @@ class Setup {
 		fclose($fp);
 
 		if($data==false){
-			$error.='download of Nextcloud source file failed.<br />'.$curlError;
+			$error.='download of Nimbus source file failed.<br />'.$curlError;
 		}
 		return($error.$curlError);
 
@@ -217,9 +217,9 @@ class Setup {
         <!DOCTYPE html>
         <html>
             <head>
-                <title>Nextcloud Setup</title>
+                <title>Nimbus Setup</title>
                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-                <link rel="icon" type="image/png" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+                <link rel="icon" type="image/png" href="http://nimbusw.cloud/index.php/apps/theming/favicon?v=10" />
                 <meta http-equiv="X-UA-Compatible" content="IE=edge">
                 <meta name="referrer" content="never">
                 <meta name="theme-color" content="#0082c9">
@@ -597,7 +597,7 @@ input[type="submit"] img, input[type="button"] img, button img, .button img { cu
 	*/
 	static public function showFooter() {
 		echo('
-		<footer><p class="info"><a href="https://nextcloud.com/" target="_blank" rel="noreferrer">Nextcloud</a> &ndash; a safe home for all your data</p></footer>
+		<footer><p class="info"><a href="https://nimbusw.cloud/" target="_blank" rel="noreferrer">Nimbus</a> &ndash; a safe home for all your data</p></footer>
 		</body>
 		</html>
 		');
@@ -630,8 +630,7 @@ input[type="submit"] img, input[type="button"] img, button img, .button img { cu
 		<div class="v-align">
 			<header><div id="header">
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xml:space="preserve" height="100" width="210" enable-background="new 0 0 196.6 72" y="0px" x="0px" viewBox="0 0 62.000002 34"><path style="color-rendering:auto;text-decoration-color:#000000;color:#000000;isolation:auto;mix-blend-mode:normal;shape-rendering:auto;solid-color:#000000;block-progression:tb;text-decoration-line:none;image-rendering:auto;white-space:normal;text-indent:0;enable-background:accumulate;text-transform:none;text-decoration-style:solid" fill="#fff" d="m31.6 4.0001c-5.95 0.0006-10.947 4.0745-12.473 9.5549-1.333-2.931-4.266-5.0088-7.674-5.0092-4.6384 0.0005-8.4524 3.8142-8.453 8.4532-0.0008321 4.6397 3.8137 8.4544 8.4534 8.455 3.4081-0.000409 6.3392-2.0792 7.6716-5.011 1.5261 5.4817 6.5242 9.5569 12.475 9.5569 5.918 0.000457 10.89-4.0302 12.448-9.4649 1.3541 2.8776 4.242 4.9184 7.6106 4.9188 4.6406 0.000828 8.4558-3.8144 8.4551-8.455-0.000457-4.6397-3.8154-8.454-8.4551-8.4533-3.3687 0.0008566-6.2587 2.0412-7.6123 4.9188-1.559-5.4338-6.528-9.4644-12.446-9.464zm0 4.9623c4.4687-0.000297 8.0384 3.5683 8.0389 8.0371 0.000228 4.4693-3.5696 8.0391-8.0389 8.0388-4.4687-0.000438-8.0375-3.5701-8.0372-8.0388 0.000457-4.4682 3.5689-8.0366 8.0372-8.0371zm-20.147 4.5456c1.9576 0.000226 3.4908 1.5334 3.4911 3.491 0.000343 1.958-1.533 3.4925-3.4911 3.4927-1.958-0.000228-3.4913-1.5347-3.4911-3.4927 0.0002284-1.9575 1.5334-3.4907 3.4911-3.491zm40.205 0c1.9579-0.000343 3.4925 1.533 3.4927 3.491 0.000457 1.9584-1.5343 3.493-3.4927 3.4927-1.958-0.000228-3.4914-1.5347-3.4911-3.4927 0.000221-1.9575 1.5335-3.4907 3.4911-3.491z"/></svg>
-
+<img height="200px" src="http://nimbusw.cloud/index.php/apps/theming/image/logo?useSvg=1&v=10" />
 			</div></header><br />
 			<p style="text-align:center; font-size:28px; color:#fff; font-weight:bold;">'.$title.'</p><br />
 			<form method="get" name="install" onsubmit="return validateForm();">
@@ -684,7 +683,7 @@ input[type="submit"] img, input[type="button"] img, button img, .button img { cu
 	* Shows the welcome screen of the setup wizard
 	*/
 	static public function showWelcome() {
-		$txt='Welcome to the Setup Wizard for<br /><b>Nextcloud</b>!<br /><br />This wizard will:<br />1. Check the server dependencies<br />2. Download Nextcloud<br />3. Install Nextcloud in a few simple steps';
+		$txt='Welcome to the Setup Wizard for<br /><b>Nimbus</b>!<br /><br />This wizard will:<br />1. Check the server dependencies<br />2. Download Nimbus<br />3. Install Nimbus in a few simple steps';
 		Setup::showContent('Setup Wizard',$txt,1);
 	}
 
@@ -695,7 +694,7 @@ input[type="submit"] img, input[type="button"] img, button img, .button img { cu
 	static public function showCheckDependencies() {
 		$error=Setup::checkDependencies();
 		if($error=='') {
-			$txt='All Nextcloud dependencies found';
+			$txt='All Nimbus dependencies found';
 			Setup::showContent('Dependency check',$txt,2);
 		}else{
 			$txt='Dependencies not found.<br />'.$error;
@@ -711,10 +710,10 @@ input[type="submit"] img, input[type="button"] img, button img, .button img { cu
 		$error=Setup::install();
 
 		if($error=='') {
-			$txt='Nextcloud is now installed';
+			$txt='Nimbus is now installed';
 			Setup::showContent('Success',$txt,3);
 		}else{
-			$txt='Nextcloud is NOT installed<br />'.$error;
+			$txt='Nimbus is NOT installed<br />'.$error;
 			Setup::showContent('Error',$txt);
 		}
 	}
